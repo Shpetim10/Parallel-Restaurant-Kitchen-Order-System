@@ -1,11 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function BarrierFlash({ orderId, tableNumber, onComplete }) {
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => { onCompleteRef.current = onComplete }, [onComplete])
+
   useEffect(() => {
-    const id = setTimeout(onComplete, 2200)
+    const id = setTimeout(() => onCompleteRef.current(), 2200)
     return () => clearTimeout(id)
-  }, [onComplete])
+  }, [orderId])
 
   return (
     <AnimatePresence>
@@ -15,6 +18,7 @@ export default function BarrierFlash({ orderId, tableNumber, onComplete }) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 1.05 }}
         transition={{ duration: 0.3, exit: { duration: 0.4, delay: 1.5 } }}
+        onClick={() => onCompleteRef.current()}
         style={{
           position: 'fixed',
           inset: 0,
@@ -24,7 +28,7 @@ export default function BarrierFlash({ orderId, tableNumber, onComplete }) {
           justifyContent: 'center',
           background: 'rgba(52, 211, 153, 0.18)',
           backdropFilter: 'blur(4px)',
-          pointerEvents: 'none',
+          cursor: 'pointer',
         }}
       >
         <motion.div

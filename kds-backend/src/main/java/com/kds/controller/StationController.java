@@ -5,6 +5,7 @@ import com.kds.enums.StationType;
 import com.kds.model.StationState;
 import com.kds.service.SimulationService;
 import com.kds.service.StationDispatcher;
+import com.kds.websocket.KitchenEventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ public class StationController {
     private final StationSemaphoreRegistry semaphoreRegistry;
     private final StationDispatcher        stationDispatcher;
     private final SimulationService        simulationService;
+    private final KitchenEventPublisher    eventPublisher;
 
     // ── Station endpoints ──────────────────────────────────────────────────────
 
@@ -67,6 +69,8 @@ public class StationController {
         semaphoreRegistry.updateCapacity(type, newCapacity);
         log.info("Station {} capacity updated to {} via API",
             type.getDisplayName(), newCapacity);
+
+        eventPublisher.publishStationUpdate(type, semaphoreRegistry.getState(type));
     }
 
     // ── Simulation endpoints ───────────────────────────────────────────────────

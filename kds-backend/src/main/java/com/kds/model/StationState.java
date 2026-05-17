@@ -17,6 +17,7 @@ public class StationState {
     private int totalCapacity;
     private AtomicInteger availableSlots;
     private AtomicInteger activeThreads;
+    private AtomicInteger waitingThreads;
     private AtomicLong totalProcessed;
     private AtomicLong averageCookTimeMs;
 
@@ -27,6 +28,7 @@ public class StationState {
         this.totalCapacity = capacity;
         this.availableSlots = new AtomicInteger(capacity);
         this.activeThreads = new AtomicInteger(0);
+        this.waitingThreads = new AtomicInteger(0);
         this.totalProcessed = new AtomicLong(0);
         this.averageCookTimeMs = new AtomicLong(0);
     }

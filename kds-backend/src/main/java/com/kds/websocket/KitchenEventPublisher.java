@@ -20,6 +20,24 @@ public class KitchenEventPublisher {
 
     private final SimpMessagingTemplate messagingTemplate;
 
+    // ── Order created ─────────────────────────────────────────────────────────
+
+    public void publishOrderCreated(Order order) {
+        OrderEvent event = OrderEvent.builder()
+            .eventType("ORDER_CREATED")
+            .orderId(order.getId())
+            .tableNumber(order.getTableNumber())
+            .orderStatus(order.getOrderStatus())
+            .order(order)
+            .timestamp(Instant.now())
+            .build();
+
+        messagingTemplate.convertAndSend("/topic/orders", event);
+
+        log.info("ORDER_CREATED published — order={} table={}",
+            order.getId(), order.getTableNumber());
+    }
+
     // ── Component lifecycle update ─────────────────────────────────────────────
 
     public void publishComponentUpdate(Order order, OrderComponent component,
@@ -35,6 +53,7 @@ public class KitchenEventPublisher {
             .orderStatus(order.getOrderStatus())
             .activeThreadsAtStation(stationState.getActiveThreads().get())
             .availableSlotsAtStation(stationState.getAvailableSlots().get())
+            .waitingThreadsAtStation(stationState.getWaitingThreads().get())
             .processingThreadName(component.getThreadName())
             .timestamp(Instant.now())
             .build();
@@ -76,6 +95,7 @@ public class KitchenEventPublisher {
             .totalCapacity(state.getTotalCapacity())
             .availableSlots(state.getAvailableSlots().get())
             .activeThreads(state.getActiveThreads().get())
+            .waitingThreads(state.getWaitingThreads().get())
             .totalProcessed(state.getTotalProcessed().get())
             .averageCookTimeMs(state.getAverageCookTimeMs().get())
             .utilizationPercent(state.getUtilizationPercent())
@@ -85,8 +105,8 @@ public class KitchenEventPublisher {
         messagingTemplate.convertAndSend("/topic/stations", event);
         messagingTemplate.convertAndSend("/topic/stations/" + stationType.name().toLowerCase(), event);
 
-        log.debug("STATION_UPDATE published — station={} utilization={:.1f}% slots={}",
-            stationType.getDisplayName(), state.getUtilizationPercent(),
+        log.debug("STATION_UPDATE published — station={} utilization={}% slots={}",
+            stationType.getDisplayName(), String.format("%.1f", state.getUtilizationPercent()),
             state.getAvailableSlots().get());
     }
 

@@ -16,7 +16,8 @@ const STATUS_ICON = {
 }
 
 export default function ComponentProgress({ component }) {
-  const { name, stationType, status, cookTimeMs, processingThreadName } = component
+  const { name, stationType, status, cookTimeMs } = component
+  const processingThreadName = component.processingThreadName ?? component.threadName
   const cfg = STATUS_ICON[status] ?? STATUS_ICON.PENDING
   const [barWidth, setBarWidth] = useState(0)
   const timerRef = useRef(null)

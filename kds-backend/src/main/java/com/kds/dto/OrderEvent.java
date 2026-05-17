@@ -20,7 +20,7 @@ import java.time.Instant;
 @AllArgsConstructor
 public class OrderEvent {
 
-    /** COMPONENT_UPDATE | ORDER_READY | ORDER_CANCELLED */
+    /** COMPONENT_UPDATE | ORDER_READY | ORDER_CANCELLED | ORDER_CREATED */
     private String eventType;
 
     private String orderId;
@@ -34,10 +34,14 @@ public class OrderEvent {
 
     private int activeThreadsAtStation;
     private int availableSlotsAtStation;
+    private int waitingThreadsAtStation;
 
     @JsonSerialize(using = InstantSerializer.class)
     @JsonDeserialize(using = InstantDeserializer.class)
     private Instant timestamp;
 
     private String processingThreadName;
+
+    /** Full order snapshot — populated only for ORDER_CREATED events */
+    private com.kds.model.Order order;
 }

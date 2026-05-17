@@ -1,5 +1,6 @@
 package com.kds.controller;
 
+import com.kds.concurrency.BarrierCoordinator;
 import com.kds.dto.OrderRequest;
 import com.kds.enums.OrderStatus;
 import com.kds.model.MenuItem;
@@ -31,8 +32,9 @@ import java.util.Map;
 @Slf4j
 public class OrderController {
 
-    private final OrderService orderService;
-    private final OrderStore   orderStore;
+    private final OrderService     orderService;
+    private final OrderStore       orderStore;
+    private final BarrierCoordinator barrierCoordinator;
 
     // ── POST /api/orders ──────────────────────────────────────────────────────
 
@@ -49,6 +51,24 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllOrders() {
         return orderService.getAllOrders();
+    }
+
+    // ── GET /api/orders/barriers ──────────────────────────────────────────────
+
+    @GetMapping("/barriers")
+    public List<Map<String, Object>> getBarrierState() {
+        return barrierCoordinator.getBarrierProgress().entrySet().stream()
+            .map(e -> {
+                String orderId = e.getKey();
+                int[] prog = e.getValue();
+                Map<String, Object> entry = new java.util.LinkedHashMap<>();
+                entry.put("orderId", orderId);
+                entry.put("arrived", prog[0]);
+                entry.put("total", prog[1]);
+                orderStore.findById(orderId).ifPresent(o -> entry.put("tableNumber", o.getTableNumber()));
+                return entry;
+            })
+            .toList();
     }
 
     // ── GET /api/orders/stats (before /{id} to avoid shadowing) ──────────────

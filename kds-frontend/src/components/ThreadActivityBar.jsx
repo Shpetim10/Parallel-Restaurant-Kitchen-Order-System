@@ -14,46 +14,58 @@ export default function ThreadActivityBar({ stations }) {
       <style>{`
         .tab-wrap {
           display: flex;
-          flex-direction: column;
-          gap: 10px;
+          align-items: center;
+          gap: 8px;
           width: 100%;
+          height: 100%;
         }
-        .tab-row {
+        .tab-station {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+          flex: 1;
+          min-width: 0;
+        }
+        .tab-station-top {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 3px;
+          width: 100%;
         }
-        .tab-label {
-          font-size: 12px;
-          color: var(--muted);
-          width: 76px;
+        .tab-emoji {
+          font-size: 11px;
           flex-shrink: 0;
-          white-space: nowrap;
         }
         .tab-bar-track {
           flex: 1;
-          height: 10px;
+          height: 6px;
           background: var(--border);
-          border-radius: 5px;
+          border-radius: 3px;
           overflow: hidden;
+          min-width: 0;
         }
         .tab-bar-fill {
           height: 100%;
-          border-radius: 5px;
+          border-radius: 3px;
           transition: width 0.4s ease;
-          min-width: 0;
         }
         .tab-count {
-          font-size: 11px;
-          color: var(--text);
+          font-size: 9px;
+          color: var(--muted);
           font-family: 'Courier New', monospace;
-          width: 28px;
-          text-align: right;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .tab-divider {
+          width: 1px;
+          height: 24px;
+          background: var(--border);
           flex-shrink: 0;
         }
       `}</style>
       <div className="tab-wrap">
-        {ORDER.map(type => {
+        {ORDER.map((type, i) => {
           const meta = STATION_META[type]
           const station = stations?.[type]
           const active = station?.activeThreads ?? 0
@@ -61,18 +73,21 @@ export default function ThreadActivityBar({ stations }) {
           const fillPct = capacity > 0 ? Math.min(100, (active / capacity) * 100) : 0
 
           return (
-            <div key={type} className="tab-row">
-              <span className="tab-label">
-                {meta.emoji} {meta.label}
-              </span>
-              <div className="tab-bar-track">
-                <div
-                  className="tab-bar-fill"
-                  style={{ width: `${fillPct}%`, background: meta.color }}
-                />
+            <>
+              {i > 0 && <div key={`div-${type}`} className="tab-divider" />}
+              <div key={type} className="tab-station" title={`${meta.label}: ${active}/${capacity} threads`}>
+                <div className="tab-station-top">
+                  <span className="tab-emoji">{meta.emoji}</span>
+                  <div className="tab-bar-track">
+                    <div
+                      className="tab-bar-fill"
+                      style={{ width: `${fillPct}%`, background: meta.color }}
+                    />
+                  </div>
+                </div>
+                <span className="tab-count">{active}/{capacity}</span>
               </div>
-              <span className="tab-count">{active}/{capacity}</span>
-            </div>
+            </>
           )
         })}
       </div>

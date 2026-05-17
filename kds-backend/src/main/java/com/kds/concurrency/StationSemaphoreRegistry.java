@@ -62,9 +62,14 @@ public class StationSemaphoreRegistry {
         log.debug("Thread [{}] acquiring semaphore for station {}",
             Thread.currentThread().getName(), stationType.getDisplayName());
 
-        semaphores.get(stationType).acquire();
-
         StationState state = stationStates.get(stationType);
+        state.getWaitingThreads().incrementAndGet();
+        try {
+            semaphores.get(stationType).acquire();
+        } finally {
+            state.getWaitingThreads().decrementAndGet();
+        }
+
         state.getAvailableSlots().decrementAndGet();
         state.getActiveThreads().incrementAndGet();
 
@@ -88,20 +93,35 @@ public class StationSemaphoreRegistry {
     // ── Dynamic capacity adjustment ───────────────────────────────────────────
 
     /**
-     * Replaces the station's semaphore with a new one at the requested capacity.
-     * Drains remaining permits from the old semaphore so in-flight threads are
-     * not affected; they will complete normally using the old reference.
+     * Adjusts the existing semaphore's permit count to match the new capacity.
+     * Mutating the live semaphore avoids the permit-leak that would occur if we
+     * replaced it: in-flight workers acquired from the old reference and would
+     * release into a brand-new one, injecting phantom permits.
      */
     public void updateCapacity(StationType stationType, int newCapacity) {
-        Semaphore old = semaphores.get(stationType);
-        old.drainPermits();
-        semaphores.put(stationType, new Semaphore(newCapacity, true));
-
+        Semaphore sem = semaphores.get(stationType);
         StationState state = stationStates.get(stationType);
-        state.setTotalCapacity(newCapacity);
-        state.getAvailableSlots().set(newCapacity);
 
-        log.info("Station {} capacity updated to {}", stationType.getDisplayName(), newCapacity);
+        int oldCapacity = state.getTotalCapacity();
+        int diff = newCapacity - oldCapacity;
+
+        if (diff > 0) {
+            sem.release(diff);
+        } else if (diff < 0) {
+            // Drain all free permits then add back only how many the new capacity allows.
+            sem.drainPermits();
+            int currentActive = state.getActiveThreads().get();
+            int freeSlots = Math.max(0, newCapacity - currentActive);
+            if (freeSlots > 0) sem.release(freeSlots);
+        }
+
+        int currentActive = state.getActiveThreads().get();
+        int freeSlots = Math.max(0, newCapacity - currentActive);
+        state.setTotalCapacity(newCapacity);
+        state.getAvailableSlots().set(freeSlots);
+
+        log.info("Station {} capacity updated {} → {} (active={}, free={})",
+            stationType.getDisplayName(), oldCapacity, newCapacity, currentActive, freeSlots);
     }
 
     // ── Accessors ─────────────────────────────────────────────────────────────

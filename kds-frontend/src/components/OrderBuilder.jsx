@@ -49,6 +49,7 @@ export default function OrderBuilder({ onSubmit, compact = false }) {
       const payload = {
         tableNumber,
         items: cart.map(i => ({
+          menuItemId: i.id,
           name: i.name,
           stationType: i.stationType,
           cookTimeMs: i.baseCookTimeMs ?? i.defaultCookTimeMs ?? 5000,

@@ -24,6 +24,7 @@ public class StationEvent {
     private int totalCapacity;
     private int availableSlots;
     private int activeThreads;
+    private int waitingThreads;
     private long totalProcessed;
     private long averageCookTimeMs;
     private double utilizationPercent;

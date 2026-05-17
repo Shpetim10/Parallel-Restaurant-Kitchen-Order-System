@@ -1,6 +1,7 @@
 package com.kds.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kds.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@JsonIgnoreProperties({"lock", "readyCondition"})
 public class Order {
 
     @EqualsAndHashCode.Include

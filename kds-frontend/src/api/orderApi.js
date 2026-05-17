@@ -10,3 +10,4 @@ export const submitOrder = body => axios.post(BASE, body).then(r => r.data)
 export const collectOrder = (id, timeout = 30000) =>
   axios.post(`${BASE}/${id}/collect?timeoutMs=${timeout}`).then(r => r.data)
 export const cancelOrder = id => axios.delete(`${BASE}/${id}`)
+export const fetchBarriers = () => axios.get(`${BASE}/barriers`).then(r => r.data)

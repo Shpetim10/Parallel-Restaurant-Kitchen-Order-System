@@ -128,9 +128,10 @@ public class OrderService {
             });
         });
 
-        // 7. Mark IN_PREPARATION
+        // 7. Mark IN_PREPARATION and publish creation event
         order.setOrderStatus(OrderStatus.IN_PREPARATION);
         orderStore.save(order);
+        eventPublisher.publishOrderCreated(order);
 
         // 8. Log summary
         log.info("Order {} created for table {} — {} components across {} station(s)",

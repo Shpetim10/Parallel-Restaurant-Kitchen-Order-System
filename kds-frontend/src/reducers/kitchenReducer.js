@@ -1,6 +1,7 @@
 export const initialState = {
   orders: {},
   stations: {},
+  barriers: {},
   recentEvents: [],
   connectionStatus: 'DISCONNECTED',
   readyFlashes: {},
@@ -19,7 +20,7 @@ export default function kitchenReducer(state, action) {
     }
 
     case 'COMPONENT_UPDATED': {
-      const { orderId, componentId, newStatus } = action.payload
+      const { orderId, componentId, newStatus, processingThreadName } = action.payload
       const order = state.orders[orderId]
       if (!order) return state
 
@@ -29,6 +30,7 @@ export default function kitchenReducer(state, action) {
         return {
           ...c,
           status: newStatus,
+          ...(processingThreadName ? { processingThreadName } : {}),
           ...(newStatus === 'IN_PROGRESS' ? { startedAt: now } : {}),
           ...(newStatus === 'DONE' ? { completedAt: now } : {}),
         }
@@ -103,8 +105,14 @@ export default function kitchenReducer(state, action) {
       }
     }
 
+    case 'BARRIERS_UPDATED': {
+      const barriers = {}
+      ;(action.payload ?? []).forEach(b => { barriers[b.orderId] = b })
+      return { ...state, barriers }
+    }
+
     case 'CLEAR_ALL':
-      return { ...state, orders: {}, readyFlashes: {} }
+      return { ...state, orders: {}, readyFlashes: {}, barriers: {} }
 
     case 'CONNECTION_STATUS':
       return { ...state, connectionStatus: action.payload }

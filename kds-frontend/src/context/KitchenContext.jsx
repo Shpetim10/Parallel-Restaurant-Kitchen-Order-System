@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useReducer, useCallback } from 'r
 import kitchenReducer, { initialState } from '../reducers/kitchenReducer'
 import { useKitchenSocket } from '../hooks/useKitchenSocket'
 import { useToast } from '../hooks/useToast'
-import { fetchAllOrders, fetchStats } from '../api/orderApi'
+import { fetchAllOrders, fetchStats, fetchBarriers } from '../api/orderApi'
 import { fetchAllStations } from '../api/stationApi'
 
 const KitchenContext = createContext(null)
@@ -23,13 +23,22 @@ export function KitchenProvider({ children }) {
       dispatch({ type: 'STATS_UPDATED', payload: stats })
     }).catch(err => console.error('Failed to load initial data:', err))
 
-    const interval = setInterval(() => {
+    const statsInterval = setInterval(() => {
       fetchStats()
         .then(stats => dispatch({ type: 'STATS_UPDATED', payload: stats }))
         .catch(() => {})
     }, 10000)
 
-    return () => clearInterval(interval)
+    const barriersInterval = setInterval(() => {
+      fetchBarriers()
+        .then(barriers => dispatch({ type: 'BARRIERS_UPDATED', payload: barriers }))
+        .catch(() => {})
+    }, 1500)
+
+    return () => {
+      clearInterval(statsInterval)
+      clearInterval(barriersInterval)
+    }
   }, [])
 
   const consumeFlash = useCallback((orderId) => {

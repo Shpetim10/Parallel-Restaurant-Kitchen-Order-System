@@ -94,4 +94,24 @@ public class BarrierCoordinator {
     public boolean hasBarrier(String orderId) {
         return barriers.containsKey(orderId);
     }
+
+    /**
+     * Returns the current barrier progress for each active order.
+     * Each entry: {arrived, total} — how many stations have hit the barrier vs. total expected.
+     */
+    public java.util.Map<String, int[]> getBarrierProgress() {
+        java.util.Map<String, int[]> result = new java.util.LinkedHashMap<>();
+        barriers.forEach((orderId, barrier) -> {
+            int arrived = barrier.getParties() - barrier.getNumberWaiting();
+            // getNumberWaiting() returns threads currently blocked at the barrier;
+            // threads that have not arrived yet are also not counted, so arrived = parties - waiting
+            // but parties - numberWaiting can exceed parties when nobody has arrived yet (0 waiting).
+            // Correct: numberWaiting is how many ARE waiting; parties - numberWaiting ≠ arrived.
+            // Actual arrived = parties - (parties - numberWaiting) when barrier not yet tripped...
+            // Actually CyclicBarrier.getNumberWaiting() returns the number of threads currently
+            // waiting AT the barrier (i.e., who called await() and are blocked). This is "arrived".
+            result.put(orderId, new int[]{ barrier.getNumberWaiting(), barrier.getParties() });
+        });
+        return result;
+    }
 }

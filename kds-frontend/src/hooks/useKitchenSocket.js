@@ -35,7 +35,9 @@ export function useKitchenSocket(dispatch, addToast) {
             const event = JSON.parse(msg.body)
             dispatch({ type: 'EVENT_RECEIVED', payload: event })
 
-            if (event.eventType === 'COMPONENT_UPDATE') {
+            if (event.eventType === 'ORDER_CREATED' && event.order) {
+              dispatch({ type: 'ORDER_CREATED', payload: event.order })
+            } else if (event.eventType === 'COMPONENT_UPDATE') {
               dispatch({ type: 'COMPONENT_UPDATED', payload: event })
             } else if (event.eventType === 'ORDER_READY') {
               dispatch({ type: 'ORDER_READY', payload: event })

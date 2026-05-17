@@ -1,20 +1,13 @@
-import { Link, useLocation } from 'react-router-dom'
 import { useKitchen } from '../context/KitchenContext'
 
-const NAV_LINKS = [
-  { to: '/kitchen', label: 'Kitchen' },
-  { to: '/manager', label: 'Dashboard' },
-]
-
 const STATUS_CONFIG = {
-  CONNECTED:    { color: 'var(--green)',  pulse: true,  label: 'Connected' },
+  CONNECTED:    { color: 'var(--green)',  pulse: true,  label: 'Live' },
   RECONNECTING: { color: 'var(--gold)',   pulse: false, label: 'Reconnecting…' },
   DISCONNECTED: { color: 'var(--accent)', pulse: false, label: 'Disconnected' },
   FAILED:       { color: 'var(--accent)', pulse: false, label: 'Connection failed' },
 }
 
 export default function Navbar() {
-  const location = useLocation()
   const { state } = useKitchen()
   const cfg = STATUS_CONFIG[state.connectionStatus] ?? STATUS_CONFIG.DISCONNECTED
 
@@ -31,45 +24,23 @@ export default function Navbar() {
           align-items: center;
           padding: 0 20px;
           z-index: 100;
-          gap: 0;
+          gap: 12px;
         }
         .navbar-brand {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin-right: 24px;
+          flex: 1;
         }
-        .navbar-brand-title {
+        .navbar-title {
           font-weight: 800;
-          font-size: 17px;
+          font-size: 16px;
           color: var(--text);
           letter-spacing: 0.5px;
         }
-        .navbar-brand-subtitle {
+        .navbar-sub {
           font-size: 12px;
           color: var(--muted);
-        }
-        .navbar-links {
-          display: flex;
-          gap: 2px;
-          flex: 1;
-        }
-        .navbar-link {
-          padding: 7px 16px;
-          font-size: 13px;
-          font-weight: 600;
-          color: var(--muted);
-          text-decoration: none;
-          border-radius: 6px;
-          transition: color 0.15s, background 0.15s;
-        }
-        .navbar-link:hover {
-          color: var(--text);
-          background: var(--card);
-        }
-        .navbar-link.active {
-          color: var(--accent);
-          background: rgba(232,98,42,0.1);
         }
         .navbar-status {
           display: flex;
@@ -95,28 +66,9 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-brand">
           <span style={{ fontSize: 22 }}>🔥</span>
-          <div>
-            <div className="navbar-brand-title">KDS</div>
-          </div>
-          <span className="navbar-brand-subtitle">Kitchen Display System</span>
+          <span className="navbar-title">Kitchen Display System</span>
+          <span className="navbar-sub">Parallel Order Processing</span>
         </div>
-
-        <div className="navbar-links">
-          {NAV_LINKS.map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              className={`navbar-link${
-                location.pathname === to || (to === '/kitchen' && location.pathname === '/')
-                  ? ' active'
-                  : ''
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-
         <div className="navbar-status">
           <span
             className={`status-dot${cfg.pulse ? ' pulse' : ''}`}
