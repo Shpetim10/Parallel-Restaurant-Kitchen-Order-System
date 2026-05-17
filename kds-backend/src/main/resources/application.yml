@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  web:
+    cors:
+      allowed-origins: http://localhost:5173
+  websocket:
+    endpoint: /ws
+
+station:
+  capacity:
+    grill: 3
+    fryer: 2
+    salad: 4
+    drinks: 5
+    dessert: 2

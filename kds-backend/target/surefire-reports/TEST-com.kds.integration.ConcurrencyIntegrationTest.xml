@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.kds.integration.ConcurrencyIntegrationTest" time="33.53" tests="6" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/test-classes:/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/classes:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.2.5/spring-boot-starter-web-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter/3.2.5/spring-boot-starter-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.2.5/spring-boot-starter-logging-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/shpetimshabanaj/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.21.1/log4j-to-slf4j-2.21.1.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/logging/log4j/log4j-api/2.21.1/log4j-api-2.21.1.jar:/Users/shpetimshabanaj/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/shpetimshabanaj/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.2.5/spring-boot-starter-json-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.4/jackson-databind-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.4/jackson-annotations-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.4/jackson-core-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.4/jackson-datatype-jdk8-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.4/jackson-datatype-jsr310-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.4/jackson-module-parameter-names-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.2.5/spring-boot-starter-tomcat-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.20/tomcat-embed-core-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.20/tomcat-embed-websocket-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-web/6.1.6/spring-web-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-beans/6.1.6/spring-beans-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/io/micrometer/micrometer-observation/1.12.5/micrometer-observation-1.12.5.jar:/Users/shpetimshabanaj/.m2/repository/io/micrometer/micrometer-commons/1.12.5/micrometer-commons-1.12.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-webmvc/6.1.6/spring-webmvc-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-aop/6.1.6/spring-aop-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-context/6.1.6/spring-context-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-expression/6.1.6/spring-expression-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-websocket/3.2.5/spring-boot-starter-websocket-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-messaging/6.1.6/spring-messaging-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-websocket/6.1.6/spring-websocket-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.2.5/spring-boot-starter-validation-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.20/tomcat-embed-el-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/shpetimshabanaj/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-devtools/3.2.5/spring-boot-devtools-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot/3.2.5/spring-boot-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.2.5/spring-boot-autoconfigure-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.2.5/spring-boot-starter-test-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-test/3.2.5/spring-boot-test-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.2.5/spring-boot-test-autoconfigure-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/shpetimshabanaj/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/shpetimshabanaj/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/shpetimshabanaj/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/shpetimshabanaj/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/shpetimshabanaj/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/Users/shpetimshabanaj/.m2/repository/net/bytebuddy/byte-buddy/1.14.13/byte-buddy-1.14.13.jar:/Users/shpetimshabanaj/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/shpetimshabanaj/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar:/Users/shpetimshabanaj/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.13/byte-buddy-agent-1.14.13.jar:/Users/shpetimshabanaj/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/shpetimshabanaj/.m2/repository/org/mockito/mockito-junit-jupiter/5.7.0/mockito-junit-jupiter-5.7.0.jar:/Users/shpetimshabanaj/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/shpetimshabanaj/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-core/6.1.6/spring-core-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-jcl/6.1.6/spring-jcl-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-test/6.1.6/spring-test-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="catalina.useNaming" value="false"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Tirane"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/Users/shpetimshabanaj/.sdkman/candidates/java/21.0.11-amzn/lib"/>
+    <property name="sun.java.command" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/surefire/surefirebooter-20260517031130124_3.jar /Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/surefire 2026-05-17T03-11-30_086-jvmRun1 surefire-20260517031130124_1tmp surefire_0-20260517031130124_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/test-classes:/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/classes:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.2.5/spring-boot-starter-web-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter/3.2.5/spring-boot-starter-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.2.5/spring-boot-starter-logging-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/shpetimshabanaj/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.21.1/log4j-to-slf4j-2.21.1.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/logging/log4j/log4j-api/2.21.1/log4j-api-2.21.1.jar:/Users/shpetimshabanaj/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/shpetimshabanaj/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.2.5/spring-boot-starter-json-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.4/jackson-databind-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.4/jackson-annotations-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.4/jackson-core-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.4/jackson-datatype-jdk8-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.4/jackson-datatype-jsr310-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.4/jackson-module-parameter-names-2.15.4.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.2.5/spring-boot-starter-tomcat-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.20/tomcat-embed-core-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.20/tomcat-embed-websocket-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-web/6.1.6/spring-web-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-beans/6.1.6/spring-beans-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/io/micrometer/micrometer-observation/1.12.5/micrometer-observation-1.12.5.jar:/Users/shpetimshabanaj/.m2/repository/io/micrometer/micrometer-commons/1.12.5/micrometer-commons-1.12.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-webmvc/6.1.6/spring-webmvc-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-aop/6.1.6/spring-aop-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-context/6.1.6/spring-context-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-expression/6.1.6/spring-expression-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-websocket/3.2.5/spring-boot-starter-websocket-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-messaging/6.1.6/spring-messaging-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-websocket/6.1.6/spring-websocket-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.2.5/spring-boot-starter-validation-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.20/tomcat-embed-el-10.1.20.jar:/Users/shpetimshabanaj/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/shpetimshabanaj/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/shpetimshabanaj/.m2/repository/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-devtools/3.2.5/spring-boot-devtools-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot/3.2.5/spring-boot-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.2.5/spring-boot-autoconfigure-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.2.5/spring-boot-starter-test-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-test/3.2.5/spring-boot-test-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.2.5/spring-boot-test-autoconfigure-3.2.5.jar:/Users/shpetimshabanaj/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/shpetimshabanaj/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/shpetimshabanaj/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/shpetimshabanaj/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/shpetimshabanaj/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/shpetimshabanaj/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/shpetimshabanaj/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/Users/shpetimshabanaj/.m2/repository/net/bytebuddy/byte-buddy/1.14.13/byte-buddy-1.14.13.jar:/Users/shpetimshabanaj/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/shpetimshabanaj/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/shpetimshabanaj/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar:/Users/shpetimshabanaj/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.13/byte-buddy-agent-1.14.13.jar:/Users/shpetimshabanaj/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/shpetimshabanaj/.m2/repository/org/mockito/mockito-junit-jupiter/5.7.0/mockito-junit-jupiter-5.7.0.jar:/Users/shpetimshabanaj/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/shpetimshabanaj/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-core/6.1.6/spring-core-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-jcl/6.1.6/spring-jcl-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/springframework/spring-test/6.1.6/spring-test-6.1.6.jar:/Users/shpetimshabanaj/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/shpetimshabanaj"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-04-21"/>
+    <property name="java.home" value="/Users/shpetimshabanaj/.sdkman/candidates/java/21.0.11-amzn"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend/target/surefire/surefirebooter-20260517031130124_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.11+10-LTS"/>
+    <property name="user.name" value="shpetimshabanaj"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.4.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-21.0.11.10.1"/>
+    <property name="localRepository" value="/Users/shpetimshabanaj/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-21/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/fm/ftpdl0496lzbz1gdxpx237zw0000gn/T/"/>
+    <property name="catalina.home" value="/private/var/folders/fm/ftpdl0496lzbz1gdxpx237zw0000gn/T/tomcat.0.6314326403996649425"/>
+    <property name="java.version" value="21.0.11"/>
+    <property name="user.dir" value="/Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="27044"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="catalina.base" value="/private/var/folders/fm/ftpdl0496lzbz1gdxpx237zw0000gn/T/tomcat.0.6314326403996649425"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/shpetimshabanaj/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="21.0.11+10-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testSemaphoreBlocksWhenAtCapacity" classname="com.kds.integration.ConcurrencyIntegrationTest" time="7.245">
+    <system-out><![CDATA[03:11:30.354 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.kds.integration.ConcurrencyIntegrationTest]: ConcurrencyIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+03:11:30.383 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.kds.KdsApplication for test class com.kds.integration.ConcurrencyIntegrationTest
+03:11:30.423 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+[background-preinit] [order=] [station=] INFO  - HV000001: Hibernate Validator 8.0.1.Final
+[main] [order=] [station=] INFO  - Starting ConcurrencyIntegrationTest using Java 21.0.11 with PID 27044 (started by shpetimshabanaj in /Users/shpetimshabanaj/Development/Parallel-Restaurant-Kitchen-Order-System/kds-backend)
+[main] [order=] [station=] INFO  - The following 1 profile is active: "test"
+[main] [order=] [station=] INFO  - Tomcat initialized with port 0 (http)
+[main] [order=] [station=] INFO  - Initializing ProtocolHandler ["http-nio-auto-1"]
+[main] [order=] [station=] INFO  - Starting service [Tomcat]
+[main] [order=] [station=] INFO  - Starting Servlet engine: [Apache Tomcat/10.1.20]
+[main] [order=] [station=] INFO  - Initializing Spring embedded WebApplicationContext
+[main] [order=] [station=] INFO  - Root WebApplicationContext: initialization completed in 307 ms
+[main] [order=] [station=] INFO  - Station Drinks Station initialized with capacity 5
+[main] [order=] [station=] INFO  - Station Salad Station initialized with capacity 4
+[main] [order=] [station=] INFO  - Station Dessert Station initialized with capacity 2
+[main] [order=] [station=] INFO  - Station Fryer Station initialized with capacity 2
+[main] [order=] [station=] INFO  - Station Grill Station initialized with capacity 3
+[main] [order=] [station=] INFO  - StationDispatcher initialised with 5 station pools
+[main] [order=] [station=] INFO  - Starting ProtocolHandler ["http-nio-auto-1"]
+[main] [order=] [station=] INFO  - Tomcat started on port 63254 (http) with context path ''
+[main] [order=] [station=] INFO  - Starting...
+[main] [order=] [station=] INFO  - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@250967f1]]
+[main] [order=] [station=] INFO  - Started.
+[main] [order=] [station=] INFO  - Started ConcurrencyIntegrationTest in 0.612 seconds (process running for 0.875)
+[pool-3-thread-6] [order=] [station=] INFO  - CyclicBarrier created for order 939385c2-5338-47cb-b4f5-4b0405e4aff5 with 1 parties
+[pool-3-thread-4] [order=] [station=] INFO  - CyclicBarrier created for order d2aba576-e812-4734-93d9-d71ff0942090 with 1 parties
+[pool-3-thread-1] [order=] [station=] INFO  - CyclicBarrier created for order 1e19788c-460f-4c20-8762-7b97b0cbf699 with 1 parties
+[pool-3-thread-2] [order=] [station=] INFO  - CyclicBarrier created for order f05024b0-01fd-46d1-9e0f-c4132d64d419 with 1 parties
+[pool-3-thread-5] [order=] [station=] INFO  - CyclicBarrier created for order dbcc0b3f-aa5d-4914-9f84-127d9895bbb7 with 1 parties
+[pool-3-thread-3] [order=] [station=] INFO  - CyclicBarrier created for order dad0285a-09ba-4dfc-b1f9-725c0e114bda with 1 parties
+[pool-3-thread-3] [order=] [station=] INFO  - Order dad0285a-09ba-4dfc-b1f9-725c0e114bda created for table 3 — 1 components across 1 station(s)
+[pool-3-thread-6] [order=] [station=] INFO  - Order 939385c2-5338-47cb-b4f5-4b0405e4aff5 created for table 6 — 1 components across 1 station(s)
+[pool-3-thread-1] [order=] [station=] INFO  - Order 1e19788c-460f-4c20-8762-7b97b0cbf699 created for table 1 — 1 components across 1 station(s)
+[pool-3-thread-2] [order=] [station=] INFO  - Order f05024b0-01fd-46d1-9e0f-c4132d64d419 created for table 2 — 1 components across 1 station(s)
+[barrier-worker-2] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[grill-worker-1] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [grill-worker-1]
+[pool-3-thread-4] [order=] [station=] INFO  - Order d2aba576-e812-4734-93d9-d71ff0942090 created for table 4 — 1 components across 1 station(s)
+[barrier-worker-6] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[pool-3-thread-5] [order=] [station=] INFO  - Order dbcc0b3f-aa5d-4914-9f84-127d9895bbb7 created for table 5 — 1 components across 1 station(s)
+[barrier-worker-3] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[barrier-worker-4] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[grill-worker-2] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [grill-worker-2]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[barrier-worker-1] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[grill-worker-3] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [grill-worker-3]
+[station-grill-1e1978] [order=1e19788c-460f-4c20-8762-7b97b0cbf699] [station=GRILL] INFO  - Cooking [Grill Station-item] for 2920ms on thread [station-grill-1e1978]
+[station-grill-dad028] [order=dad0285a-09ba-4dfc-b1f9-725c0e114bda] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3522ms on thread [station-grill-dad028]
+[station-grill-939385] [order=939385c2-5338-47cb-b4f5-4b0405e4aff5] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3537ms on thread [station-grill-939385]
+[station-grill-1e1978] [order=1e19788c-460f-4c20-8762-7b97b0cbf699] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-1e1978]
+[barrier-worker-3] [order=] [station=] INFO  - *** BARRIER FIRED for order 1e19788c-460f-4c20-8762-7b97b0cbf699 — all 1 stations completed! ***
+[station-grill-1e1978] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-1e1978]
+[station-grill-f05024] [order=f05024b0-01fd-46d1-9e0f-c4132d64d419] [station=GRILL] INFO  - Cooking [Grill Station-item] for 2954ms on thread [station-grill-f05024]
+[barrier-worker-3] [order=] [station=] INFO  - ORDER_READY published — order=1e19788c-460f-4c20-8762-7b97b0cbf699 table=1 elapsed=2949ms
+[station-grill-dad028] [order=dad0285a-09ba-4dfc-b1f9-725c0e114bda] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-dad028]
+[barrier-worker-5] [order=] [station=] INFO  - *** BARRIER FIRED for order dad0285a-09ba-4dfc-b1f9-725c0e114bda — all 1 stations completed! ***
+[station-grill-dad028] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-dad028]
+[barrier-worker-5] [order=] [station=] INFO  - ORDER_READY published — order=dad0285a-09ba-4dfc-b1f9-725c0e114bda table=3 elapsed=3547ms
+[station-grill-d2aba5] [order=d2aba576-e812-4734-93d9-d71ff0942090] [station=GRILL] INFO  - Cooking [Grill Station-item] for 2778ms on thread [station-grill-d2aba5]
+[station-grill-939385] [order=939385c2-5338-47cb-b4f5-4b0405e4aff5] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-939385]
+[station-grill-939385] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-939385]
+[barrier-worker-1] [order=] [station=] INFO  - *** BARRIER FIRED for order 939385c2-5338-47cb-b4f5-4b0405e4aff5 — all 1 stations completed! ***
+[station-grill-dbcc0b] [order=dbcc0b3f-aa5d-4914-9f84-127d9895bbb7] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3285ms on thread [station-grill-dbcc0b]
+[barrier-worker-1] [order=] [station=] INFO  - ORDER_READY published — order=939385c2-5338-47cb-b4f5-4b0405e4aff5 table=6 elapsed=3562ms
+[station-grill-f05024] [order=f05024b0-01fd-46d1-9e0f-c4132d64d419] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-f05024]
+[barrier-worker-2] [order=] [station=] INFO  - *** BARRIER FIRED for order f05024b0-01fd-46d1-9e0f-c4132d64d419 — all 1 stations completed! ***
+[barrier-worker-2] [order=] [station=] INFO  - ORDER_READY published — order=f05024b0-01fd-46d1-9e0f-c4132d64d419 table=2 elapsed=5906ms
+[station-grill-d2aba5] [order=d2aba576-e812-4734-93d9-d71ff0942090] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-d2aba5]
+[barrier-worker-6] [order=] [station=] INFO  - *** BARRIER FIRED for order d2aba576-e812-4734-93d9-d71ff0942090 — all 1 stations completed! ***
+[barrier-worker-6] [order=] [station=] INFO  - ORDER_READY published — order=d2aba576-e812-4734-93d9-d71ff0942090 table=4 elapsed=6329ms
+[station-grill-dbcc0b] [order=dbcc0b3f-aa5d-4914-9f84-127d9895bbb7] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-dbcc0b]
+[barrier-worker-4] [order=] [station=] INFO  - *** BARRIER FIRED for order dbcc0b3f-aa5d-4914-9f84-127d9895bbb7 — all 1 stations completed! ***
+[barrier-worker-4] [order=] [station=] INFO  - ORDER_READY published — order=dbcc0b3f-aa5d-4914-9f84-127d9895bbb7 table=5 elapsed=6853ms
+[main] [order=] [station=] INFO  - TEST 2: peak concurrent GRILL components = 3 (capacity = 3)
+[main] [order=] [station=] INFO  - TEST 2: 4th started at 2026-05-17T01:11:34.290488Z, first-batch completions = [2026-05-17T01:11:34.888665Z, 2026-05-17T01:11:34.903692Z, 2026-05-17T01:11:34.286870Z]
+]]></system-out>
+    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/shpetimshabanaj/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.13/byte-buddy-agent-1.14.13.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+  <testcase name="testBarrierFiresOnlyWhenAllStationsDone" classname="com.kds.integration.ConcurrencyIntegrationTest" time="7.284">
+    <system-out><![CDATA[[main] [order=] [station=] INFO  - CyclicBarrier created for order 66e66753-dfb2-4a67-b0fb-5aa74d25a2ea with 2 parties
+[main] [order=] [station=] INFO  - Order 66e66753-dfb2-4a67-b0fb-5aa74d25a2ea created for table 1 — 2 components across 2 station(s)
+[barrier-worker-6] [order=] [station=] INFO  - Dispatched [Burger] to Grill Station pool (latch=1)
+[barrier-worker-4] [order=] [station=] INFO  - Dispatched [Coke] to Drinks Station pool (latch=1)
+[drinks-worker-1] [order=] [station=] INFO  - StationWorker started — component [Coke] station [Drinks Station] thread [drinks-worker-1]
+[station-grill-f05024] [order=] [station=] INFO  - StationWorker started — component [Burger] station [Grill Station] thread [station-grill-f05024]
+[station-grill-66e667] [order=66e66753-dfb2-4a67-b0fb-5aa74d25a2ea] [station=GRILL] INFO  - Cooking [Burger] for 7121ms on thread [station-grill-66e667]
+[station-drinks-66e667] [order=66e66753-dfb2-4a67-b0fb-5aa74d25a2ea] [station=DRINKS] INFO  - Cooking [Coke] for 588ms on thread [station-drinks-66e667]
+[station-drinks-66e667] [order=66e66753-dfb2-4a67-b0fb-5aa74d25a2ea] [station=DRINKS] INFO  - Component [Coke] DONE on thread [station-drinks-66e667]
+[station-grill-66e667] [order=66e66753-dfb2-4a67-b0fb-5aa74d25a2ea] [station=GRILL] INFO  - Component [Burger] DONE on thread [station-grill-66e667]
+[barrier-worker-6] [order=] [station=] INFO  - *** BARRIER FIRED for order 66e66753-dfb2-4a67-b0fb-5aa74d25a2ea — all 2 stations completed! ***
+[barrier-worker-6] [order=] [station=] INFO  - ORDER_READY published — order=66e66753-dfb2-4a67-b0fb-5aa74d25a2ea table=1 elapsed=7127ms
+[main] [order=] [station=] INFO  - TEST 4: DRINKS→READY gap = 6534ms (GRILL was still cooking during this time)
+]]></system-out>
+  </testcase>
+  <testcase name="testConcurrentOrdersUseSeparateThreads" classname="com.kds.integration.ConcurrencyIntegrationTest" time="6.501">
+    <system-out><![CDATA[[pool-4-thread-3] [order=] [station=] INFO  - CyclicBarrier created for order 5527f0f5-7e4b-456b-a81d-6755ab9d7206 with 1 parties
+[pool-4-thread-2] [order=] [station=] INFO  - CyclicBarrier created for order cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c with 1 parties
+[pool-4-thread-4] [order=] [station=] INFO  - CyclicBarrier created for order 409d4b3b-08e4-4404-9d04-8ef573b04a4b with 1 parties
+[pool-4-thread-1] [order=] [station=] INFO  - CyclicBarrier created for order 81fef79c-3789-4739-b48d-ef11451a01b1 with 1 parties
+[pool-4-thread-4] [order=] [station=] INFO  - Order 409d4b3b-08e4-4404-9d04-8ef573b04a4b created for table 4 — 1 components across 1 station(s)
+[barrier-worker-6] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[barrier-worker-1] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[station-grill-dbcc0b] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-dbcc0b]
+[pool-4-thread-5] [order=] [station=] INFO  - CyclicBarrier created for order 2e8a52f2-17a9-4b6e-bf9d-38e515541588 with 1 parties
+[pool-4-thread-3] [order=] [station=] INFO  - Order 5527f0f5-7e4b-456b-a81d-6755ab9d7206 created for table 3 — 1 components across 1 station(s)
+[pool-4-thread-5] [order=] [station=] INFO  - Order 2e8a52f2-17a9-4b6e-bf9d-38e515541588 created for table 5 — 1 components across 1 station(s)
+[pool-4-thread-2] [order=] [station=] INFO  - Order cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c created for table 2 — 1 components across 1 station(s)
+[barrier-worker-4] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[pool-4-thread-1] [order=] [station=] INFO  - Order 81fef79c-3789-4739-b48d-ef11451a01b1 created for table 1 — 1 components across 1 station(s)
+[barrier-worker-2] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[station-grill-d2aba5] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-d2aba5]
+[station-grill-cb844a] [order=cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3257ms on thread [station-grill-cb844a]
+[station-grill-66e667] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-66e667]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[station-grill-5527f0] [order=5527f0f5-7e4b-456b-a81d-6755ab9d7206] [station=GRILL] INFO  - Cooking [Grill Station-item] for 2540ms on thread [station-grill-5527f0]
+[station-grill-409d4b] [order=409d4b3b-08e4-4404-9d04-8ef573b04a4b] [station=GRILL] INFO  - Cooking [Grill Station-item] for 2960ms on thread [station-grill-409d4b]
+[station-grill-5527f0] [order=5527f0f5-7e4b-456b-a81d-6755ab9d7206] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-5527f0]
+[station-grill-5527f0] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-5527f0]
+[barrier-worker-4] [order=] [station=] INFO  - *** BARRIER FIRED for order 5527f0f5-7e4b-456b-a81d-6755ab9d7206 — all 1 stations completed! ***
+[station-grill-81fef7] [order=81fef79c-3789-4739-b48d-ef11451a01b1] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3045ms on thread [station-grill-81fef7]
+[barrier-worker-4] [order=] [station=] INFO  - ORDER_READY published — order=5527f0f5-7e4b-456b-a81d-6755ab9d7206 table=3 elapsed=2546ms
+[station-grill-409d4b] [order=409d4b3b-08e4-4404-9d04-8ef573b04a4b] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-409d4b]
+[barrier-worker-2] [order=] [station=] INFO  - *** BARRIER FIRED for order 409d4b3b-08e4-4404-9d04-8ef573b04a4b — all 1 stations completed! ***
+[station-grill-409d4b] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-409d4b]
+[station-grill-2e8a52] [order=2e8a52f2-17a9-4b6e-bf9d-38e515541588] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3490ms on thread [station-grill-2e8a52]
+[barrier-worker-2] [order=] [station=] INFO  - ORDER_READY published — order=409d4b3b-08e4-4404-9d04-8ef573b04a4b table=4 elapsed=2966ms
+[station-grill-cb844a] [order=cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-cb844a]
+[barrier-worker-6] [order=] [station=] INFO  - *** BARRIER FIRED for order cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c — all 1 stations completed! ***
+[barrier-worker-6] [order=] [station=] INFO  - ORDER_READY published — order=cb844a80-5a7f-4f5e-ae9c-33c4b9abbc4c table=2 elapsed=3263ms
+[station-grill-81fef7] [order=81fef79c-3789-4739-b48d-ef11451a01b1] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-81fef7]
+[barrier-worker-1] [order=] [station=] INFO  - *** BARRIER FIRED for order 81fef79c-3789-4739-b48d-ef11451a01b1 — all 1 stations completed! ***
+[barrier-worker-1] [order=] [station=] INFO  - ORDER_READY published — order=81fef79c-3789-4739-b48d-ef11451a01b1 table=1 elapsed=5593ms
+[station-grill-2e8a52] [order=2e8a52f2-17a9-4b6e-bf9d-38e515541588] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-2e8a52]
+[barrier-worker-5] [order=] [station=] INFO  - *** BARRIER FIRED for order 2e8a52f2-17a9-4b6e-bf9d-38e515541588 — all 1 stations completed! ***
+[barrier-worker-5] [order=] [station=] INFO  - ORDER_READY published — order=2e8a52f2-17a9-4b6e-bf9d-38e515541588 table=5 elapsed=6457ms
+[main] [order=] [station=] INFO  - TEST 1: 5 GRILL orders completed in 6500ms wall time (sequential would take 15000ms)
+[main] [order=] [station=] INFO  - TEST 1: thread names = [station-grill-409d4b, station-grill-5527f0, station-grill-2e8a52, station-grill-cb844a, station-grill-81fef7]
+]]></system-out>
+  </testcase>
+  <testcase name="testConcurrentStatusUpdatesCauseNoCorruption" classname="com.kds.integration.ConcurrencyIntegrationTest" time="1.635">
+    <system-out><![CDATA[[main] [order=] [station=] INFO  - CyclicBarrier created for order e82dad34-9797-4f4a-b210-e38f820c7fd4 with 1 parties
+[main] [order=] [station=] INFO  - Order e82dad34-9797-4f4a-b210-e38f820c7fd4 created for table 1 — 10 components across 1 station(s)
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-0] to Salad Station pool (latch=10)
+[salad-worker-1] [order=] [station=] INFO  - StationWorker started — component [Salad-0] station [Salad Station] thread [salad-worker-1]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-1] to Salad Station pool (latch=10)
+[salad-worker-2] [order=] [station=] INFO  - StationWorker started — component [Salad-1] station [Salad Station] thread [salad-worker-2]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-2] to Salad Station pool (latch=10)
+[salad-worker-3] [order=] [station=] INFO  - StationWorker started — component [Salad-2] station [Salad Station] thread [salad-worker-3]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-0] for 474ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-1] for 434ms on thread [station-salad-e82dad]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-3] to Salad Station pool (latch=10)
+[salad-worker-4] [order=] [station=] INFO  - StationWorker started — component [Salad-3] station [Salad Station] thread [salad-worker-4]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-4] to Salad Station pool (latch=10)
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-5] to Salad Station pool (latch=10)
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-2] for 406ms on thread [station-salad-e82dad]
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-6] to Salad Station pool (latch=10)
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-7] to Salad Station pool (latch=10)
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-8] to Salad Station pool (latch=10)
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Salad-9] to Salad Station pool (latch=10)
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-3] for 464ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-2] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-4] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-4] for 448ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-1] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-5] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-5] for 592ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-3] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-6] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-6] for 418ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-0] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-7] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-7] for 472ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-4] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-8] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-8] for 578ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-6] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Salad-9] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Cooking [Salad-9] for 434ms on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-7] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-5] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-9] DONE on thread [station-salad-e82dad]
+[station-salad-e82dad] [order=e82dad34-9797-4f4a-b210-e38f820c7fd4] [station=SALAD] INFO  - Component [Salad-8] DONE on thread [station-salad-e82dad]
+[barrier-worker-5] [order=] [station=] INFO  - *** BARRIER FIRED for order e82dad34-9797-4f4a-b210-e38f820c7fd4 — all 1 stations completed! ***
+[barrier-worker-5] [order=] [station=] INFO  - ORDER_READY published — order=e82dad34-9797-4f4a-b210-e38f820c7fd4 table=1 elapsed=1443ms
+[main] [order=] [station=] INFO  - TEST 3: 10 SALAD components all consistent — no mutex corruption detected
+]]></system-out>
+  </testcase>
+  <testcase name="testSystemHandles20ConcurrentOrders" classname="com.kds.integration.ConcurrencyIntegrationTest" time="7.109">
+    <system-out><![CDATA[[pool-5-thread-20] [order=] [station=] INFO  - CyclicBarrier created for order 2afe0c7f-7c0e-48fd-941b-5a9af1fc249b with 3 parties
+[pool-5-thread-8] [order=] [station=] INFO  - CyclicBarrier created for order 3fafd4c6-74b4-442a-b791-d9e9331f2956 with 2 parties
+[pool-5-thread-8] [order=] [station=] INFO  - Order 3fafd4c6-74b4-442a-b791-d9e9331f2956 created for table 8 — 4 components across 2 station(s)
+[pool-5-thread-5] [order=] [station=] INFO  - CyclicBarrier created for order d0315736-c1e8-47fc-9b20-a56572753e1e with 2 parties
+[barrier-worker-6] [order=] [station=] INFO  - Dispatched [Item-0] to Salad Station pool (latch=2)
+[barrier-worker-6] [order=] [station=] INFO  - Dispatched [Item-3] to Salad Station pool (latch=2)
+[pool-5-thread-20] [order=] [station=] INFO  - Order 2afe0c7f-7c0e-48fd-941b-5a9af1fc249b created for table 20 — 4 components across 3 station(s)
+[barrier-worker-4] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=2)
+[barrier-worker-4] [order=] [station=] INFO  - Dispatched [Item-2] to Grill Station pool (latch=2)
+[barrier-worker-2] [order=] [station=] INFO  - Dispatched [Item-0] to Grill Station pool (latch=1)
+[station-grill-cb844a] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Grill Station] thread [station-grill-cb844a]
+[pool-5-thread-4] [order=] [station=] INFO  - CyclicBarrier created for order ba211a51-174f-46dd-b636-10c40d2e405b with 4 parties
+[barrier-worker-5] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=1)
+[station-grill-81fef7] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-81fef7]
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Salad Station] thread [station-salad-e82dad]
+[drinks-worker-2] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [drinks-worker-2]
+[pool-5-thread-6] [order=] [station=] INFO  - CyclicBarrier created for order e05a6842-fe40-4914-b3cc-5304912d15ab with 3 parties
+[station-salad-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=SALAD] INFO  - Cooking [Item-0] for 1567ms on thread [station-salad-3fafd4]
+[station-grill-2e8a52] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Grill Station] thread [station-grill-2e8a52]
+[station-drinks-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=DRINKS] INFO  - Cooking [Item-2] for 1418ms on thread [station-drinks-2afe0c]
+[pool-5-thread-9] [order=] [station=] INFO  - CyclicBarrier created for order 7f30f9b8-020a-4f14-84fa-69305265989c with 3 parties
+[station-grill-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=GRILL] INFO  - Cooking [Item-2] for 1160ms on thread [station-grill-3fafd4]
+[pool-5-thread-7] [order=] [station=] INFO  - CyclicBarrier created for order 20f17e58-9545-4ef9-a231-594c62c23f09 with 3 parties
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Salad Station] thread [station-salad-e82dad]
+[pool-5-thread-11] [order=] [station=] INFO  - CyclicBarrier created for order f13caeb9-286a-429a-9929-68d2a3d09504 with 3 parties
+[barrier-worker-10] [order=] [station=] INFO  - Dispatched [Item-2] to Salad Station pool (latch=1)
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Salad Station] thread [station-salad-e82dad]
+[station-salad-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=SALAD] INFO  - Cooking [Item-3] for 1136ms on thread [station-salad-3fafd4]
+[station-grill-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=GRILL] INFO  - Cooking [Item-0] for 1511ms on thread [station-grill-2afe0c]
+[pool-5-thread-12] [order=] [station=] INFO  - CyclicBarrier created for order 2437423e-c228-4e04-baa4-928eeee80579 with 3 parties
+[station-grill-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=GRILL] INFO  - Cooking [Item-1] for 905ms on thread [station-grill-3fafd4]
+[station-salad-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=SALAD] INFO  - Cooking [Item-2] for 2071ms on thread [station-salad-ba211a]
+[barrier-worker-13] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[pool-5-thread-10] [order=] [station=] INFO  - CyclicBarrier created for order 925fdb11-54f6-4540-8824-2ffa147198ac with 3 parties
+[pool-5-thread-4] [order=] [station=] INFO  - Order ba211a51-174f-46dd-b636-10c40d2e405b created for table 4 — 4 components across 4 station(s)
+[pool-5-thread-14] [order=] [station=] INFO  - CyclicBarrier created for order 4599fed5-d3ad-4259-abe2-76fb01b79f09 with 2 parties
+[pool-5-thread-17] [order=] [station=] INFO  - CyclicBarrier created for order 315ce3a6-b255-4381-869f-5e54d216f960 with 2 parties
+[barrier-worker-18] [order=] [station=] INFO  - Dispatched [Item-1] to Salad Station pool (latch=1)
+[pool-5-thread-18] [order=] [station=] INFO  - CyclicBarrier created for order 214d4bc3-5479-49b7-9219-9d3940a877c5 with 2 parties
+[station-salad-e82dad] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Salad Station] thread [station-salad-e82dad]
+[barrier-worker-17] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=2)
+[pool-5-thread-19] [order=] [station=] INFO  - CyclicBarrier created for order d46a86c8-03d8-45de-ba13-3afe3459d5f3 with 3 parties
+[drinks-worker-4] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [drinks-worker-4]
+[station-salad-4599fe] [order=4599fed5-d3ad-4259-abe2-76fb01b79f09] [station=SALAD] INFO  - Cooking [Item-1] for 1689ms on thread [station-salad-4599fe]
+[pool-5-thread-15] [order=] [station=] INFO  - CyclicBarrier created for order d93a5ad6-c63e-4e8c-9364-375174ef3a65 with 3 parties
+[barrier-worker-17] [order=] [station=] INFO  - Dispatched [Item-3] to Drinks Station pool (latch=2)
+[pool-5-thread-2] [order=] [station=] INFO  - CyclicBarrier created for order 623a3613-5d35-4ff8-b0e3-7b59e4e37e56 with 2 parties
+[pool-5-thread-3] [order=] [station=] INFO  - CyclicBarrier created for order ba9360d2-7725-4bd4-a820-d4229333276c with 2 parties
+[station-drinks-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=DRINKS] INFO  - Cooking [Item-0] for 756ms on thread [station-drinks-925fdb]
+[drinks-worker-5] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Drinks Station] thread [drinks-worker-5]
+[pool-5-thread-1] [order=] [station=] INFO  - CyclicBarrier created for order 5b9a81e9-5860-4186-a407-cdcf8063d8b2 with 3 parties
+[pool-5-thread-13] [order=] [station=] INFO  - CyclicBarrier created for order f20a972a-06a8-40de-a0b1-324d57b62c8b with 2 parties
+[station-drinks-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=DRINKS] INFO  - Cooking [Item-3] for 623ms on thread [station-drinks-925fdb]
+[station-drinks-66e667] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [station-drinks-66e667]
+[barrier-worker-24] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=1)
+[pool-5-thread-16] [order=] [station=] INFO  - CyclicBarrier created for order ec95c9ba-a92b-490e-bb66-37ff421c028e with 2 parties
+[pool-5-thread-15] [order=] [station=] INFO  - Order d93a5ad6-c63e-4e8c-9364-375174ef3a65 created for table 15 — 4 components across 3 station(s)
+[barrier-worker-27] [order=] [station=] INFO  - Dispatched [Item-1] to Fryer Station pool (latch=1)
+[station-drinks-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=DRINKS] INFO  - Cooking [Item-2] for 1205ms on thread [station-drinks-d93a5a]
+[barrier-worker-30] [order=] [station=] INFO  - Dispatched [Item-0] to Grill Station pool (latch=2)
+[barrier-worker-30] [order=] [station=] INFO  - Dispatched [Item-3] to Grill Station pool (latch=2)
+[barrier-worker-31] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=3)
+[barrier-worker-31] [order=] [station=] INFO  - Dispatched [Item-1] to Drinks Station pool (latch=3)
+[barrier-worker-7] [order=] [station=] INFO  - Dispatched [Item-1] to Salad Station pool (latch=1)
+[pool-5-thread-5] [order=] [station=] INFO  - Order d0315736-c1e8-47fc-9b20-a56572753e1e created for table 5 — 2 components across 2 station(s)
+[barrier-worker-9] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=1)
+[barrier-worker-31] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=3)
+[dessert-worker-1] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Dessert Station] thread [dessert-worker-1]
+[barrier-worker-15] [order=] [station=] INFO  - Dispatched [Item-3] to Dessert Station pool (latch=1)
+[barrier-worker-19] [order=] [station=] INFO  - Dispatched [Item-2] to Fryer Station pool (latch=1)
+[barrier-worker-11] [order=] [station=] INFO  - Dispatched [Item-2] to Fryer Station pool (latch=1)
+[pool-5-thread-14] [order=] [station=] INFO  - Order 4599fed5-d3ad-4259-abe2-76fb01b79f09 created for table 14 — 2 components across 2 station(s)
+[barrier-worker-20] [order=] [station=] INFO  - Dispatched [Item-0] to Grill Station pool (latch=1)
+[fryer-worker-1] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Fryer Station] thread [fryer-worker-1]
+[barrier-worker-1] [order=] [station=] INFO  - Dispatched [Item-1] to Fryer Station pool (latch=2)
+[station-dessert-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=DESSERT] INFO  - Cooking [Item-3] for 949ms on thread [station-dessert-ba211a]
+[barrier-worker-21] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=1)
+[barrier-worker-1] [order=] [station=] INFO  - Dispatched [Item-3] to Fryer Station pool (latch=2)
+[barrier-worker-22] [order=] [station=] INFO  - Dispatched [Item-1] to Drinks Station pool (latch=1)
+[barrier-worker-23] [order=] [station=] INFO  - Dispatched [Item-2] to Salad Station pool (latch=1)
+[station-fryer-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=FRYER] INFO  - Cooking [Item-1] for 1712ms on thread [station-fryer-2afe0c]
+[barrier-worker-12] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=1)
+[barrier-worker-25] [order=] [station=] INFO  - Dispatched [Item-0] to Fryer Station pool (latch=1)
+[barrier-worker-8] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=1)
+[drinks-worker-3] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [drinks-worker-3]
+[barrier-worker-26] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=1)
+[fryer-worker-2] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Fryer Station] thread [fryer-worker-2]
+[barrier-worker-3] [order=] [station=] INFO  - Dispatched [Item-0] to Fryer Station pool (latch=1)
+[barrier-worker-28] [order=] [station=] INFO  - Dispatched [Item-0] to Drinks Station pool (latch=2)
+[station-drinks-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=DRINKS] INFO  - Cooking [Item-0] for 746ms on thread [station-drinks-ba211a]
+[barrier-worker-29] [order=] [station=] INFO  - Dispatched [Item-1] to Fryer Station pool (latch=1)
+[barrier-worker-28] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=2)
+[barrier-worker-14] [order=] [station=] INFO  - Dispatched [Item-1] to Drinks Station pool (latch=1)
+[station-fryer-d03157] [order=d0315736-c1e8-47fc-9b20-a56572753e1e] [station=FRYER] INFO  - Cooking [Item-0] for 839ms on thread [station-fryer-d03157]
+[barrier-worker-16] [order=] [station=] INFO  - Dispatched [Item-2] to Drinks Station pool (latch=1)
+[barrier-worker-32] [order=] [station=] INFO  - Dispatched [Item-3] to Salad Station pool (latch=1)
+[pool-5-thread-16] [order=] [station=] INFO  - Order ec95c9ba-a92b-490e-bb66-37ff421c028e created for table 16 — 4 components across 2 station(s)
+[barrier-worker-33] [order=] [station=] INFO  - Dispatched [Item-0] to Grill Station pool (latch=1)
+[barrier-worker-35] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[barrier-worker-34] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[pool-5-thread-10] [order=] [station=] INFO  - Order 925fdb11-54f6-4540-8824-2ffa147198ac created for table 10 — 4 components across 3 station(s)
+[pool-5-thread-17] [order=] [station=] INFO  - Order 315ce3a6-b255-4381-869f-5e54d216f960 created for table 17 — 2 components across 2 station(s)
+[pool-5-thread-18] [order=] [station=] INFO  - Order 214d4bc3-5479-49b7-9219-9d3940a877c5 created for table 18 — 2 components across 2 station(s)
+[barrier-worker-36] [order=] [station=] INFO  - Dispatched [Item-1] to Salad Station pool (latch=1)
+[barrier-worker-37] [order=] [station=] INFO  - Dispatched [Item-0] to Salad Station pool (latch=1)
+[barrier-worker-38] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[pool-5-thread-2] [order=] [station=] INFO  - Order 623a3613-5d35-4ff8-b0e3-7b59e4e37e56 created for table 2 — 2 components across 2 station(s)
+[barrier-worker-39] [order=] [station=] INFO  - Dispatched [Item-2] to Fryer Station pool (latch=2)
+[barrier-worker-39] [order=] [station=] INFO  - Dispatched [Item-3] to Fryer Station pool (latch=2)
+[barrier-worker-40] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[pool-5-thread-3] [order=] [station=] INFO  - Order ba9360d2-7725-4bd4-a820-d4229333276c created for table 3 — 2 components across 2 station(s)
+[barrier-worker-41] [order=] [station=] INFO  - Dispatched [Item-1] to Dessert Station pool (latch=1)
+[barrier-worker-42] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[dessert-worker-2] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Dessert Station] thread [dessert-worker-2]
+[barrier-worker-44] [order=] [station=] INFO  - Dispatched [Item-3] to Salad Station pool (latch=1)
+[barrier-worker-45] [order=] [station=] INFO  - Dispatched [Item-0] to Salad Station pool (latch=2)
+[pool-5-thread-6] [order=] [station=] INFO  - Order e05a6842-fe40-4914-b3cc-5304912d15ab created for table 6 — 3 components across 3 station(s)
+[barrier-worker-45] [order=] [station=] INFO  - Dispatched [Item-3] to Salad Station pool (latch=2)
+[pool-5-thread-19] [order=] [station=] INFO  - Order d46a86c8-03d8-45de-ba13-3afe3459d5f3 created for table 19 — 3 components across 3 station(s)
+[pool-5-thread-7] [order=] [station=] INFO  - Order 20f17e58-9545-4ef9-a231-594c62c23f09 created for table 7 — 4 components across 3 station(s)
+[barrier-worker-47] [order=] [station=] INFO  - Dispatched [Item-0] to Dessert Station pool (latch=1)
+[pool-5-thread-13] [order=] [station=] INFO  - Order f20a972a-06a8-40de-a0b1-324d57b62c8b created for table 13 — 2 components across 2 station(s)
+[barrier-worker-43] [order=] [station=] INFO  - Dispatched [Item-0] to Grill Station pool (latch=1)
+[pool-5-thread-9] [order=] [station=] INFO  - Order 7f30f9b8-020a-4f14-84fa-69305265989c created for table 9 — 3 components across 3 station(s)
+[barrier-worker-46] [order=] [station=] INFO  - Dispatched [Item-1] to Dessert Station pool (latch=1)
+[station-dessert-ba9360] [order=ba9360d2-7725-4bd4-a820-d4229333276c] [station=DESSERT] INFO  - Cooking [Item-1] for 1881ms on thread [station-dessert-ba9360]
+[barrier-worker-48] [order=] [station=] INFO  - Dispatched [Item-0] to Dessert Station pool (latch=1)
+[pool-5-thread-11] [order=] [station=] INFO  - Order f13caeb9-286a-429a-9929-68d2a3d09504 created for table 11 — 4 components across 3 station(s)
+[barrier-worker-49] [order=] [station=] INFO  - Dispatched [Item-1] to Grill Station pool (latch=1)
+[pool-5-thread-1] [order=] [station=] INFO  - Order 5b9a81e9-5860-4186-a407-cdcf8063d8b2 created for table 1 — 4 components across 3 station(s)
+[barrier-worker-50] [order=] [station=] INFO  - Dispatched [Item-3] to Dessert Station pool (latch=1)
+[barrier-worker-51] [order=] [station=] INFO  - Dispatched [Item-0] to Dessert Station pool (latch=2)
+[pool-5-thread-12] [order=] [station=] INFO  - Order 2437423e-c228-4e04-baa4-928eeee80579 created for table 12 — 4 components across 3 station(s)
+[barrier-worker-52] [order=] [station=] INFO  - Dispatched [Item-1] to Dessert Station pool (latch=1)
+[barrier-worker-51] [order=] [station=] INFO  - Dispatched [Item-2] to Dessert Station pool (latch=2)
+[station-drinks-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=DRINKS] INFO  - Component [Item-3] DONE on thread [station-drinks-925fdb]
+[station-drinks-925fdb] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [station-drinks-925fdb]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Cooking [Item-0] for 1379ms on thread [station-drinks-ec95c9]
+[station-drinks-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-ba211a]
+[station-drinks-ba211a] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Drinks Station] thread [station-drinks-ba211a]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Cooking [Item-1] for 1359ms on thread [station-drinks-ec95c9]
+[station-drinks-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-925fdb]
+[station-drinks-925fdb] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [station-drinks-925fdb]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Cooking [Item-2] for 1049ms on thread [station-drinks-ec95c9]
+[station-fryer-d03157] [order=d0315736-c1e8-47fc-9b20-a56572753e1e] [station=FRYER] INFO  - Component [Item-0] DONE on thread [station-fryer-d03157]
+[station-fryer-d03157] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Fryer Station] thread [station-fryer-d03157]
+[station-fryer-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=FRYER] INFO  - Cooking [Item-1] for 527ms on thread [station-fryer-d93a5a]
+[station-grill-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-3fafd4]
+[station-grill-3fafd4] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-3fafd4]
+[station-grill-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=GRILL] INFO  - Cooking [Item-1] for 1291ms on thread [station-grill-ba211a]
+[station-dessert-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=DESSERT] INFO  - Component [Item-3] DONE on thread [station-dessert-ba211a]
+[station-dessert-ba211a] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Dessert Station] thread [station-dessert-ba211a]
+[station-dessert-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=DESSERT] INFO  - Cooking [Item-1] for 794ms on thread [station-dessert-e05a68]
+[station-salad-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=SALAD] INFO  - Component [Item-3] DONE on thread [station-salad-3fafd4]
+[station-salad-3fafd4] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Salad Station] thread [station-salad-3fafd4]
+[station-salad-d03157] [order=d0315736-c1e8-47fc-9b20-a56572753e1e] [station=SALAD] INFO  - Cooking [Item-1] for 1133ms on thread [station-salad-d03157]
+[station-grill-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=GRILL] INFO  - Component [Item-2] DONE on thread [station-grill-3fafd4]
+[station-grill-3fafd4] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Grill Station] thread [station-grill-3fafd4]
+[station-grill-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=GRILL] INFO  - Cooking [Item-0] for 1411ms on thread [station-grill-d93a5a]
+[station-drinks-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-d93a5a]
+[station-drinks-d93a5a] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [station-drinks-d93a5a]
+[station-drinks-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=DRINKS] INFO  - Cooking [Item-2] for 969ms on thread [station-drinks-e05a68]
+[station-fryer-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=FRYER] INFO  - Component [Item-1] DONE on thread [station-fryer-d93a5a]
+[station-fryer-d93a5a] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Fryer Station] thread [station-fryer-d93a5a]
+[station-fryer-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=FRYER] INFO  - Cooking [Item-2] for 1279ms on thread [station-fryer-925fdb]
+[station-drinks-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-2afe0c]
+[station-drinks-2afe0c] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [station-drinks-2afe0c]
+[station-drinks-315ce3] [order=315ce3a6-b255-4381-869f-5e54d216f960] [station=DRINKS] INFO  - Cooking [Item-0] for 1504ms on thread [station-drinks-315ce3]
+[station-grill-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=GRILL] INFO  - Component [Item-0] DONE on thread [station-grill-2afe0c]
+[station-grill-2afe0c] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Grill Station] thread [station-grill-2afe0c]
+[station-grill-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=GRILL] INFO  - Cooking [Item-3] for 639ms on thread [station-grill-d93a5a]
+[station-salad-3fafd4] [order=3fafd4c6-74b4-442a-b791-d9e9331f2956] [station=SALAD] INFO  - Component [Item-0] DONE on thread [station-salad-3fafd4]
+[station-salad-3fafd4] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Salad Station] thread [station-salad-3fafd4]
+[barrier-worker-6] [order=] [station=] INFO  - *** BARRIER FIRED for order 3fafd4c6-74b4-442a-b791-d9e9331f2956 — all 2 stations completed! ***
+[station-salad-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=SALAD] INFO  - Cooking [Item-2] for 1261ms on thread [station-salad-d46a86]
+[barrier-worker-6] [order=] [station=] INFO  - ORDER_READY published — order=3fafd4c6-74b4-442a-b791-d9e9331f2956 table=8 elapsed=1574ms
+[station-salad-4599fe] [order=4599fed5-d3ad-4259-abe2-76fb01b79f09] [station=SALAD] INFO  - Component [Item-1] DONE on thread [station-salad-4599fe]
+[station-salad-4599fe] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Salad Station] thread [station-salad-4599fe]
+[station-salad-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=SALAD] INFO  - Cooking [Item-3] for 1874ms on thread [station-salad-ec95c9]
+[station-fryer-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=FRYER] INFO  - Component [Item-1] DONE on thread [station-fryer-2afe0c]
+[station-fryer-2afe0c] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Fryer Station] thread [station-fryer-2afe0c]
+[station-fryer-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=FRYER] INFO  - Cooking [Item-2] for 1548ms on thread [station-fryer-7f30f9]
+[station-dessert-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=DESSERT] INFO  - Component [Item-1] DONE on thread [station-dessert-e05a68]
+[station-dessert-e05a68] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Dessert Station] thread [station-dessert-e05a68]
+[station-dessert-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=DESSERT] INFO  - Cooking [Item-0] for 477ms on thread [station-dessert-d46a86]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-ec95c9]
+[station-drinks-ec95c9] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Drinks Station] thread [station-drinks-ec95c9]
+[station-drinks-214d4b] [order=214d4bc3-5479-49b7-9219-9d3940a877c5] [station=DRINKS] INFO  - Cooking [Item-1] for 1054ms on thread [station-drinks-214d4b]
+[station-dessert-ba9360] [order=ba9360d2-7725-4bd4-a820-d4229333276c] [station=DESSERT] INFO  - Component [Item-1] DONE on thread [station-dessert-ba9360]
+[station-dessert-ba9360] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Dessert Station] thread [station-dessert-ba9360]
+[station-dessert-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=DESSERT] INFO  - Cooking [Item-0] for 2014ms on thread [station-dessert-7f30f9]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-ec95c9]
+[station-drinks-ec95c9] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [station-drinks-ec95c9]
+[station-drinks-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=DRINKS] INFO  - Cooking [Item-0] for 1440ms on thread [station-drinks-20f17e]
+[station-salad-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=SALAD] INFO  - Component [Item-2] DONE on thread [station-salad-ba211a]
+[station-salad-ba211a] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Salad Station] thread [station-salad-ba211a]
+[station-salad-315ce3] [order=315ce3a6-b255-4381-869f-5e54d216f960] [station=SALAD] INFO  - Cooking [Item-1] for 1210ms on thread [station-salad-315ce3]
+[station-drinks-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=DRINKS] INFO  - Component [Item-1] DONE on thread [station-drinks-ec95c9]
+[station-drinks-ec95c9] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [station-drinks-ec95c9]
+[station-drinks-ba9360] [order=ba9360d2-7725-4bd4-a820-d4229333276c] [station=DRINKS] INFO  - Cooking [Item-0] for 1739ms on thread [station-drinks-ba9360]
+[station-grill-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=GRILL] INFO  - Component [Item-3] DONE on thread [station-grill-d93a5a]
+[station-grill-d93a5a] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Grill Station] thread [station-grill-d93a5a]
+[station-grill-4599fe] [order=4599fed5-d3ad-4259-abe2-76fb01b79f09] [station=GRILL] INFO  - Cooking [Item-0] for 1682ms on thread [station-grill-4599fe]
+[station-drinks-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-e05a68]
+[station-drinks-e05a68] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Drinks Station] thread [station-drinks-e05a68]
+[station-drinks-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DRINKS] INFO  - Cooking [Item-0] for 1338ms on thread [station-drinks-5b9a81]
+[station-grill-ba211a] [order=ba211a51-174f-46dd-b636-10c40d2e405b] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-ba211a]
+[station-grill-ba211a] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Grill Station] thread [station-grill-ba211a]
+[barrier-worker-13] [order=] [station=] INFO  - *** BARRIER FIRED for order ba211a51-174f-46dd-b636-10c40d2e405b — all 4 stations completed! ***
+[station-grill-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=GRILL] INFO  - Cooking [Item-0] for 1710ms on thread [station-grill-e05a68]
+[barrier-worker-13] [order=] [station=] INFO  - ORDER_READY published — order=ba211a51-174f-46dd-b636-10c40d2e405b table=4 elapsed=2203ms
+[station-dessert-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=DESSERT] INFO  - Component [Item-0] DONE on thread [station-dessert-d46a86]
+[station-dessert-d46a86] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Dessert Station] thread [station-dessert-d46a86]
+[station-dessert-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DESSERT] INFO  - Cooking [Item-3] for 1222ms on thread [station-dessert-5b9a81]
+[station-salad-d03157] [order=d0315736-c1e8-47fc-9b20-a56572753e1e] [station=SALAD] INFO  - Component [Item-1] DONE on thread [station-salad-d03157]
+[station-salad-d03157] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Salad Station] thread [station-salad-d03157]
+[barrier-worker-7] [order=] [station=] INFO  - *** BARRIER FIRED for order d0315736-c1e8-47fc-9b20-a56572753e1e — all 2 stations completed! ***
+[station-salad-214d4b] [order=214d4bc3-5479-49b7-9219-9d3940a877c5] [station=SALAD] INFO  - Cooking [Item-0] for 606ms on thread [station-salad-214d4b]
+[barrier-worker-7] [order=] [station=] INFO  - ORDER_READY published — order=d0315736-c1e8-47fc-9b20-a56572753e1e table=5 elapsed=2278ms
+[station-grill-d93a5a] [order=d93a5ad6-c63e-4e8c-9364-375174ef3a65] [station=GRILL] INFO  - Component [Item-0] DONE on thread [station-grill-d93a5a]
+[station-grill-d93a5a] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-d93a5a]
+[barrier-worker-30] [order=] [station=] INFO  - *** BARRIER FIRED for order d93a5ad6-c63e-4e8c-9364-375174ef3a65 — all 3 stations completed! ***
+[station-grill-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=GRILL] INFO  - Cooking [Item-1] for 1833ms on thread [station-grill-7f30f9]
+[barrier-worker-30] [order=] [station=] INFO  - ORDER_READY published — order=d93a5ad6-c63e-4e8c-9364-375174ef3a65 table=15 elapsed=2576ms
+[station-fryer-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=FRYER] INFO  - Component [Item-2] DONE on thread [station-fryer-925fdb]
+[station-fryer-925fdb] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Fryer Station] thread [station-fryer-925fdb]
+[station-fryer-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=FRYER] INFO  - Cooking [Item-3] for 2006ms on thread [station-fryer-2afe0c]
+[station-salad-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=SALAD] INFO  - Component [Item-2] DONE on thread [station-salad-d46a86]
+[station-salad-d46a86] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Salad Station] thread [station-salad-d46a86]
+[station-salad-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=SALAD] INFO  - Cooking [Item-3] for 727ms on thread [station-salad-f13cae]
+[station-drinks-214d4b] [order=214d4bc3-5479-49b7-9219-9d3940a877c5] [station=DRINKS] INFO  - Component [Item-1] DONE on thread [station-drinks-214d4b]
+[station-drinks-214d4b] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [station-drinks-214d4b]
+[station-drinks-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DRINKS] INFO  - Cooking [Item-2] for 1171ms on thread [station-drinks-5b9a81]
+[station-salad-214d4b] [order=214d4bc3-5479-49b7-9219-9d3940a877c5] [station=SALAD] INFO  - Component [Item-0] DONE on thread [station-salad-214d4b]
+[station-salad-214d4b] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Salad Station] thread [station-salad-214d4b]
+[barrier-worker-37] [order=] [station=] INFO  - *** BARRIER FIRED for order 214d4bc3-5479-49b7-9219-9d3940a877c5 — all 2 stations completed! ***
+[station-salad-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=SALAD] INFO  - Cooking [Item-0] for 1281ms on thread [station-salad-243742]
+[barrier-worker-37] [order=] [station=] INFO  - ORDER_READY published — order=214d4bc3-5479-49b7-9219-9d3940a877c5 table=18 elapsed=2884ms
+[station-drinks-315ce3] [order=315ce3a6-b255-4381-869f-5e54d216f960] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-315ce3]
+[station-drinks-315ce3] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Drinks Station] thread [station-drinks-315ce3]
+[station-drinks-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DRINKS] INFO  - Cooking [Item-1] for 1933ms on thread [station-drinks-f13cae]
+[station-fryer-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=FRYER] INFO  - Component [Item-2] DONE on thread [station-fryer-7f30f9]
+[station-fryer-7f30f9] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Fryer Station] thread [station-fryer-7f30f9]
+[station-fryer-623a36] [order=623a3613-5d35-4ff8-b0e3-7b59e4e37e56] [station=FRYER] INFO  - Cooking [Item-0] for 1584ms on thread [station-fryer-623a36]
+[station-salad-315ce3] [order=315ce3a6-b255-4381-869f-5e54d216f960] [station=SALAD] INFO  - Component [Item-1] DONE on thread [station-salad-315ce3]
+[station-salad-315ce3] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Salad Station] thread [station-salad-315ce3]
+[barrier-worker-36] [order=] [station=] INFO  - *** BARRIER FIRED for order 315ce3a6-b255-4381-869f-5e54d216f960 — all 2 stations completed! ***
+[station-salad-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=SALAD] INFO  - Cooking [Item-3] for 1823ms on thread [station-salad-243742]
+[barrier-worker-36] [order=] [station=] INFO  - ORDER_READY published — order=315ce3a6-b255-4381-869f-5e54d216f960 table=17 elapsed=3286ms
+[station-drinks-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-20f17e]
+[station-drinks-20f17e] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Drinks Station] thread [station-drinks-20f17e]
+[station-drinks-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=DRINKS] INFO  - Cooking [Item-2] for 1669ms on thread [station-drinks-243742]
+[station-dessert-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DESSERT] INFO  - Component [Item-3] DONE on thread [station-dessert-5b9a81]
+[station-dessert-5b9a81] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Dessert Station] thread [station-dessert-5b9a81]
+[station-dessert-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DESSERT] INFO  - Cooking [Item-0] for 1271ms on thread [station-dessert-f13cae]
+[station-drinks-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-5b9a81]
+[station-salad-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=SALAD] INFO  - Component [Item-3] DONE on thread [station-salad-f13cae]
+[station-salad-ec95c9] [order=ec95c9ba-a92b-490e-bb66-37ff421c028e] [station=SALAD] INFO  - Component [Item-3] DONE on thread [station-salad-ec95c9]
+[barrier-worker-32] [order=] [station=] INFO  - *** BARRIER FIRED for order ec95c9ba-a92b-490e-bb66-37ff421c028e — all 2 stations completed! ***
+[barrier-worker-32] [order=] [station=] INFO  - ORDER_READY published — order=ec95c9ba-a92b-490e-bb66-37ff421c028e table=16 elapsed=3568ms
+[station-grill-4599fe] [order=4599fed5-d3ad-4259-abe2-76fb01b79f09] [station=GRILL] INFO  - Component [Item-0] DONE on thread [station-grill-4599fe]
+[station-grill-4599fe] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-4599fe]
+[barrier-worker-20] [order=] [station=] INFO  - *** BARRIER FIRED for order 4599fed5-d3ad-4259-abe2-76fb01b79f09 — all 2 stations completed! ***
+[station-grill-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=GRILL] INFO  - Cooking [Item-1] for 1469ms on thread [station-grill-925fdb]
+[barrier-worker-20] [order=] [station=] INFO  - ORDER_READY published — order=4599fed5-d3ad-4259-abe2-76fb01b79f09 table=14 elapsed=3847ms
+[station-drinks-ba9360] [order=ba9360d2-7725-4bd4-a820-d4229333276c] [station=DRINKS] INFO  - Component [Item-0] DONE on thread [station-drinks-ba9360]
+[barrier-worker-26] [order=] [station=] INFO  - *** BARRIER FIRED for order ba9360d2-7725-4bd4-a820-d4229333276c — all 2 stations completed! ***
+[barrier-worker-26] [order=] [station=] INFO  - ORDER_READY published — order=ba9360d2-7725-4bd4-a820-d4229333276c table=3 elapsed=3862ms
+[station-dessert-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=DESSERT] INFO  - Component [Item-0] DONE on thread [station-dessert-7f30f9]
+[station-dessert-7f30f9] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Dessert Station] thread [station-dessert-7f30f9]
+[station-dessert-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=DESSERT] INFO  - Cooking [Item-1] for 894ms on thread [station-dessert-243742]
+[station-grill-e05a68] [order=e05a6842-fe40-4914-b3cc-5304912d15ab] [station=GRILL] INFO  - Component [Item-0] DONE on thread [station-grill-e05a68]
+[station-grill-e05a68] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-e05a68]
+[barrier-worker-33] [order=] [station=] INFO  - *** BARRIER FIRED for order e05a6842-fe40-4914-b3cc-5304912d15ab — all 3 stations completed! ***
+[station-grill-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=GRILL] INFO  - Cooking [Item-1] for 1617ms on thread [station-grill-d46a86]
+[barrier-worker-33] [order=] [station=] INFO  - ORDER_READY published — order=e05a6842-fe40-4914-b3cc-5304912d15ab table=6 elapsed=3914ms
+[station-drinks-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-5b9a81]
+[station-salad-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=SALAD] INFO  - Component [Item-0] DONE on thread [station-salad-243742]
+[station-grill-7f30f9] [order=7f30f9b8-020a-4f14-84fa-69305265989c] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-7f30f9]
+[station-grill-7f30f9] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-7f30f9]
+[barrier-worker-35] [order=] [station=] INFO  - *** BARRIER FIRED for order 7f30f9b8-020a-4f14-84fa-69305265989c — all 3 stations completed! ***
+[station-grill-623a36] [order=623a3613-5d35-4ff8-b0e3-7b59e4e37e56] [station=GRILL] INFO  - Cooking [Item-1] for 1627ms on thread [station-grill-623a36]
+[barrier-worker-35] [order=] [station=] INFO  - ORDER_READY published — order=7f30f9b8-020a-4f14-84fa-69305265989c table=9 elapsed=4415ms
+[station-fryer-2afe0c] [order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b] [station=FRYER] INFO  - Component [Item-3] DONE on thread [station-fryer-2afe0c]
+[station-fryer-2afe0c] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Fryer Station] thread [station-fryer-2afe0c]
+[barrier-worker-1] [order=] [station=] INFO  - *** BARRIER FIRED for order 2afe0c7f-7c0e-48fd-941b-5a9af1fc249b — all 3 stations completed! ***
+[barrier-worker-1] [order=] [station=] INFO  - ORDER_READY published — order=2afe0c7f-7c0e-48fd-941b-5a9af1fc249b table=20 elapsed=4671ms
+[station-fryer-f20a97] [order=f20a972a-06a8-40de-a0b1-324d57b62c8b] [station=FRYER] INFO  - Cooking [Item-1] for 687ms on thread [station-fryer-f20a97]
+[station-dessert-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DESSERT] INFO  - Component [Item-0] DONE on thread [station-dessert-f13cae]
+[station-dessert-f13cae] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Dessert Station] thread [station-dessert-f13cae]
+[station-dessert-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DESSERT] INFO  - Cooking [Item-2] for 657ms on thread [station-dessert-f13cae]
+[station-dessert-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=DESSERT] INFO  - Component [Item-1] DONE on thread [station-dessert-243742]
+[station-fryer-623a36] [order=623a3613-5d35-4ff8-b0e3-7b59e4e37e56] [station=FRYER] INFO  - Component [Item-0] DONE on thread [station-fryer-623a36]
+[station-fryer-623a36] [order=] [station=] INFO  - StationWorker started — component [Item-2] station [Fryer Station] thread [station-fryer-623a36]
+[station-fryer-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=FRYER] INFO  - Cooking [Item-2] for 1753ms on thread [station-fryer-20f17e]
+[station-drinks-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DRINKS] INFO  - Component [Item-1] DONE on thread [station-drinks-f13cae]
+[station-salad-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=SALAD] INFO  - Component [Item-3] DONE on thread [station-salad-243742]
+[station-drinks-243742] [order=2437423e-c228-4e04-baa4-928eeee80579] [station=DRINKS] INFO  - Component [Item-2] DONE on thread [station-drinks-243742]
+[barrier-worker-16] [order=] [station=] INFO  - *** BARRIER FIRED for order 2437423e-c228-4e04-baa4-928eeee80579 — all 3 stations completed! ***
+[barrier-worker-16] [order=] [station=] INFO  - ORDER_READY published — order=2437423e-c228-4e04-baa4-928eeee80579 table=12 elapsed=5124ms
+[station-grill-925fdb] [order=925fdb11-54f6-4540-8824-2ffa147198ac] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-925fdb]
+[barrier-worker-34] [order=] [station=] INFO  - *** BARRIER FIRED for order 925fdb11-54f6-4540-8824-2ffa147198ac — all 3 stations completed! ***
+[station-grill-925fdb] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-925fdb]
+[barrier-worker-34] [order=] [station=] INFO  - ORDER_READY published — order=925fdb11-54f6-4540-8824-2ffa147198ac table=10 elapsed=5321ms
+[station-grill-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=GRILL] INFO  - Cooking [Item-1] for 1427ms on thread [station-grill-5b9a81]
+[station-fryer-f20a97] [order=f20a972a-06a8-40de-a0b1-324d57b62c8b] [station=FRYER] INFO  - Component [Item-1] DONE on thread [station-fryer-f20a97]
+[station-fryer-f20a97] [order=] [station=] INFO  - StationWorker started — component [Item-3] station [Fryer Station] thread [station-fryer-f20a97]
+[station-fryer-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=FRYER] INFO  - Cooking [Item-3] for 639ms on thread [station-fryer-20f17e]
+[station-dessert-f13cae] [order=f13caeb9-286a-429a-9929-68d2a3d09504] [station=DESSERT] INFO  - Component [Item-2] DONE on thread [station-dessert-f13cae]
+[barrier-worker-51] [order=] [station=] INFO  - *** BARRIER FIRED for order f13caeb9-286a-429a-9929-68d2a3d09504 — all 3 stations completed! ***
+[barrier-worker-51] [order=] [station=] INFO  - ORDER_READY published — order=f13caeb9-286a-429a-9929-68d2a3d09504 table=11 elapsed=5393ms
+[station-grill-d46a86] [order=d46a86c8-03d8-45de-ba13-3afe3459d5f3] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-d46a86]
+[station-grill-d46a86] [order=] [station=] INFO  - StationWorker started — component [Item-1] station [Grill Station] thread [station-grill-d46a86]
+[barrier-worker-38] [order=] [station=] INFO  - *** BARRIER FIRED for order d46a86c8-03d8-45de-ba13-3afe3459d5f3 — all 3 stations completed! ***
+[station-grill-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=GRILL] INFO  - Cooking [Item-1] for 831ms on thread [station-grill-20f17e]
+[barrier-worker-38] [order=] [station=] INFO  - ORDER_READY published — order=d46a86c8-03d8-45de-ba13-3afe3459d5f3 table=19 elapsed=5535ms
+[station-fryer-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=FRYER] INFO  - Component [Item-3] DONE on thread [station-fryer-20f17e]
+[station-grill-623a36] [order=623a3613-5d35-4ff8-b0e3-7b59e4e37e56] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-623a36]
+[station-grill-623a36] [order=] [station=] INFO  - StationWorker started — component [Item-0] station [Grill Station] thread [station-grill-623a36]
+[barrier-worker-40] [order=] [station=] INFO  - *** BARRIER FIRED for order 623a3613-5d35-4ff8-b0e3-7b59e4e37e56 — all 2 stations completed! ***
+[station-grill-f20a97] [order=f20a972a-06a8-40de-a0b1-324d57b62c8b] [station=GRILL] INFO  - Cooking [Item-0] for 967ms on thread [station-grill-f20a97]
+[barrier-worker-40] [order=] [station=] INFO  - ORDER_READY published — order=623a3613-5d35-4ff8-b0e3-7b59e4e37e56 table=2 elapsed=6045ms
+[station-grill-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-20f17e]
+[station-fryer-20f17e] [order=20f17e58-9545-4ef9-a231-594c62c23f09] [station=FRYER] INFO  - Component [Item-2] DONE on thread [station-fryer-20f17e]
+[barrier-worker-39] [order=] [station=] INFO  - *** BARRIER FIRED for order 20f17e58-9545-4ef9-a231-594c62c23f09 — all 3 stations completed! ***
+[barrier-worker-39] [order=] [station=] INFO  - ORDER_READY published — order=20f17e58-9545-4ef9-a231-594c62c23f09 table=7 elapsed=6619ms
+[station-grill-5b9a81] [order=5b9a81e9-5860-4186-a407-cdcf8063d8b2] [station=GRILL] INFO  - Component [Item-1] DONE on thread [station-grill-5b9a81]
+[barrier-worker-42] [order=] [station=] INFO  - *** BARRIER FIRED for order 5b9a81e9-5860-4186-a407-cdcf8063d8b2 — all 3 stations completed! ***
+[barrier-worker-42] [order=] [station=] INFO  - ORDER_READY published — order=5b9a81e9-5860-4186-a407-cdcf8063d8b2 table=1 elapsed=6751ms
+[station-grill-f20a97] [order=f20a972a-06a8-40de-a0b1-324d57b62c8b] [station=GRILL] INFO  - Component [Item-0] DONE on thread [station-grill-f20a97]
+[barrier-worker-43] [order=] [station=] INFO  - *** BARRIER FIRED for order f20a972a-06a8-40de-a0b1-324d57b62c8b — all 2 stations completed! ***
+[barrier-worker-43] [order=] [station=] INFO  - ORDER_READY published — order=f20a972a-06a8-40de-a0b1-324d57b62c8b table=13 elapsed=7016ms
+[main] [order=] [station=] INFO  - TEST 6: All 20 orders completed. Avg completion time = 4344ms
+]]></system-out>
+  </testcase>
+  <testcase name="testCollectBlocksUntilReady" classname="com.kds.integration.ConcurrencyIntegrationTest" time="3.019">
+    <system-out><![CDATA[[main] [order=] [station=] INFO  - CyclicBarrier created for order 06eb5a30-1d21-4d1f-ae13-5923c69af6b5 with 1 parties
+[main] [order=] [station=] INFO  - Order 06eb5a30-1d21-4d1f-ae13-5923c69af6b5 created for table 1 — 1 components across 1 station(s)
+[barrier-worker-29] [order=] [station=] INFO  - Dispatched [Grill Station-item] to Grill Station pool (latch=1)
+[station-grill-20f17e] [order=] [station=] INFO  - StationWorker started — component [Grill Station-item] station [Grill Station] thread [station-grill-20f17e]
+[station-grill-06eb5a] [order=06eb5a30-1d21-4d1f-ae13-5923c69af6b5] [station=GRILL] INFO  - Cooking [Grill Station-item] for 3009ms on thread [station-grill-06eb5a]
+[main] [order=] [station=] INFO  - TEST 5: collector thread state at t=500ms = TIMED_WAITING
+[station-grill-06eb5a] [order=06eb5a30-1d21-4d1f-ae13-5923c69af6b5] [station=GRILL] INFO  - Component [Grill Station-item] DONE on thread [station-grill-06eb5a]
+[barrier-worker-29] [order=] [station=] INFO  - *** BARRIER FIRED for order 06eb5a30-1d21-4d1f-ae13-5923c69af6b5 — all 1 stations completed! ***
+[test-collector-thread] [order=] [station=] INFO  - Order 06eb5a30-1d21-4d1f-ae13-5923c69af6b5 collected after await (elapsed 3013ms)
+[barrier-worker-29] [order=] [station=] INFO  - ORDER_READY published — order=06eb5a30-1d21-4d1f-ae13-5923c69af6b5 table=1 elapsed=3013ms
+[main] [order=] [station=] INFO  - TEST 5: collector unblocked after 3016ms (cook time was 3000ms ±20%)
+]]></system-out>
+  </testcase>
+</testsuite>
